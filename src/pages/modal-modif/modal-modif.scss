@@ -1,0 +1,95 @@
+page-modal-modif {
+
+    // .scroll-content {
+    
+    //     align-content: center;
+    //     display: flex;
+    //     flex-direction: column;
+    //     text-align: center;
+    // }
+
+    @media screen and (max-width: 30em) {
+        ion-select { font-size: 1em; }
+    }
+
+    @media only screen and (min-width: 600px) { 
+
+    .scroll-content {
+        width: 60%;
+        left: 20%;
+        align-content: center;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        //justify-content: center;
+    }
+}
+  
+    .tryMe {
+        text-decoration: underline;
+
+    }
+
+    // -----------------select country----------------------
+    // .nation {
+    //     position: flex;
+    // }
+
+    ion-label {
+        font-weight: bold;
+    }
+
+    ion-input {
+        box-shadow: none !important;
+
+    }
+    
+    ion-select {
+       // display: inline-block;
+        vertical-align: middle;
+        position: relative;
+        text-align: right;
+       // background: transparent;
+        width: 60%;
+        max-width: 500px;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+    
+
+
+    .error-message{
+        color: red;
+        background-color: transparent;
+        margin-bottom: -1em;
+        margin-top: -0.8em;
+       // margin-left: -1em;
+                min-height: 2.2rem;
+                p {
+                    font-size: 70%;
+                }
+                ion-label{
+                    margin: 2px0;            // ??
+                }
+                .item-inner{
+                    border-bottom: 0 !important;
+                }
+    }
+
+    .passwordC {
+        padding-top: 0.5em;
+    }
+
+    .deleteB {
+        position: fixed;
+        right: 6%;
+        bottom: 3%;
+    }
+
+   
+
+}

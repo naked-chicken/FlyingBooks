@@ -1,0 +1,72 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>adminPage</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  test
+  <button (click)="alertTest()" ion-button clear item-end>alert</button>
+
+
+
+  <ion-item>
+    <ion-label color="primary">go to user</ion-label>
+    <ion-input [(ngModel)]="userId" placeholder="userId"></ion-input>
+    <button (click)="goToDudeProfil(userId)" color="danger" ion-button clear item-end>GO</button>
+
+  </ion-item>
+
+  <ion-item>
+    <ion-label color="primary">go to book</ion-label>
+    <ion-input [(ngModel)]="bookId" placeholder="bookId"></ion-input>
+    <button (click)="gotobook(bookId)" color="danger" ion-button clear item-end>GO</button>
+
+  </ion-item>
+
+  <ion-item>
+    <ion-label color="primary">delete that shit</ion-label>
+    <ion-input [(ngModel)]="userPseudo" placeholder="userPseudo"></ion-input>
+    <button (click)="deleteReportsComments(userPseudo)" color="danger" ion-button clear item-end>delete</button>
+
+  </ion-item>
+  <br>
+
+  <!-- ----------------------------------------------------------------------------------------------------------- -->
+  <!-- <div [ngStyle]="{'display': flex}">
+    <button (click)="getReportTab()" ion-button clear>get Report Tab</button>
+    <button *ngIf="this.reportTab" (click)="closeReportTab()" ion-button clear item-end>close</button>
+  </div> -->
+
+  report Tab:
+  <ion-icon color="success" item-right [name]="this.reportTab ? 'arrow-dropdown' : 'arrow-dropright'" (click)="getReportTab()"></ion-icon>
+
+
+  <ion-list>
+    <ion-card *ngFor="let report of reportTab, let i=index">
+      <p (click)="goToDudeProfil(report.userId)">{{report.pseudo}}</p>
+      <p>{{report.nbRep}}</p>
+      <p (click)="goToDudeProfil(report.userId)">{{report.userId}}</p>
+      bookId:
+      <ion-icon color="success" item-right [name]="isGroupShown(i) ? 'arrow-dropdown' : 'arrow-dropright'" (click)="toggleGroup(i)"
+        [ngClass]="{active: isGroupShown(i)}"></ion-icon>
+      <div *ngIf="isGroupShown(i)">
+        <ion-list>
+          <ion-card *ngFor="let book of report.booksId">
+            <p (click)="gotobook(book.bookId)">{{book.bookId}}</p>
+            <p>{{book.nb}}</p>
+
+          </ion-card>
+        </ion-list>
+      </div>
+
+    </ion-card>
+  </ion-list>
+  <!-- //------------------------------------------------------------------------------------------------------------- -->
+
+
+
+</ion-content>

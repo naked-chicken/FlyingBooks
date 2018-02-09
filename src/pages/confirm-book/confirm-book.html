@@ -1,0 +1,91 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Confirmation</ion-title>
+
+    
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <div [ngSwitch]="whoOnScreen">
+
+
+    <ion-card class="bookCard" *ngSwitchCase="'book'">
+      <ion-item>
+        <div item-start>
+          <img class="imga" *ngIf="book.volumeInfo.imageLinks === undefined" src="assets/imgs/no_image_found.jpg">
+          <img class="imga" *ngIf="book.volumeInfo.imageLinks !== undefined" src={{book.volumeInfo.imageLinks.smallThumbnail}}>
+        </div>
+
+        <h1 text-wrap>{{book.volumeInfo.title}}</h1>
+        <h3>{{book.volumeInfo.authors}}</h3>
+      </ion-item>
+
+      <!-- <button ion-button block clear (click)="alertReleasedBook()"> -->
+          <button ion-button block clear (click)="confirmReleasedBook()">
+        save that book
+      </button>
+    </ion-card>
+
+
+    <div *ngSwitchCase="'qrCode'">
+      <ion-card>
+
+        <div id="Html2Pdf">
+          <!-- fiche à imprimer -->
+          <p class="hello">
+            HELLO! Bonjour! Congrats you just find a Flying Book!
+          </p>
+          <ion-grid>
+            <ion-row>
+              <ion-col col-4>
+                <img src="assets/imgs/FlyingBooks.jpg">
+                <br>
+                <p class="tel">Téléchargez l'application mobile </p>
+                <p class="tel">creez un compte de base</p>
+                <p class="tel">(1min, pas plus, que vous pourrez compléter plus tard);</p>
+              </ion-col>
+
+              <ion-col col-4 class="text-etiq">
+                <p>
+                  je suis un livre un peu particulier. Mon but est bien evidemment d'être lu par le maximum de personnes, mais surtout de parcourir
+                  le monde.
+                </p>
+                <p>Ensuite lisez moi et relachez moi, si possible, dans une autre ville, au autre pays, un autre continent,
+                  voir même une autre planète ...</p>
+                <p>Et apprenez comment relacher facilement mes futurs compagnons de route, et suivez leur parcours à travers
+                  le monde!</p>
+              </ion-col>
+
+              <ion-col col-4>
+                <ngx-qrcode [qrc-value]="createdCode"></ngx-qrcode>
+                <p class="value"> {{ createdCode }}</p>
+                <p class="qrcode">avec votre mobile, scannez le QR Code (à droite, ou entrez le code à la main), et découvrez par qui, quand
+                    et où j'ai été lu, et mon itinéraire sur GoogleMap.</p>
+
+              </ion-col>
+            </ion-row>
+
+
+          </ion-grid>
+
+        </div>
+      </ion-card>
+      <!-- ---------- -->
+
+      <button ion-button full icon-left (click)="generatePdf()">
+        <ion-icon name="barcode"></ion-icon>Imprime QR Code</button>
+
+      <!-- ngif ++ -->
+      <button ion-button block clear (click)="gotoBookProfile()">
+        Done !
+      </button>
+    </div>
+
+
+  </div>
+</ion-content>

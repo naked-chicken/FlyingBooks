@@ -1,0 +1,204 @@
+<ion-header>
+    <ion-navbar color="primary">
+
+        <ion-title>
+            <img [ngStyle]="{'width' : '40px'}" src="assets/imgs/FlyingBooks.jpg"> FlyingBooks
+        </ion-title>
+
+
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+    <div class="abs">
+        <!--____________________________ card presentation + bouton du modal __________________-->
+
+        <ion-card class="presentationCard">
+            <ion-item class="presentation">
+                <ion-thumbnail item-start>
+                    <img src="{{this.imgUrl}}">
+                </ion-thumbnail>
+
+                <h1> {{ this.pseudo }} </h1>
+
+                <div *ngIf='flag !== ""' [ngStyle]="{'display' : 'flex'}">
+                    <span (click)="nationOnOff()" class="flag-icon" [ngStyle]="{'background-image': 'url(' + flag + ')' }"></span>
+                    <p *ngIf="showNation">{{this.nation | countryName}}</p>
+                </div>
+
+                <div *ngIf='flag == ""' align-items-center [ngStyle]="{'display' : 'flex'}">
+                    <img (click)="nationOnOff()" [ngStyle]="{'width': '1.5em', 'height': '1.5em'}" src="assets/imgs/earth.png">
+                    <p *ngIf="showNation">from earth</p>
+                </div>
+
+
+                <p *ngIf='this.birthDate !== undefined'> {{ this?.birthDate | age}} </p>
+
+                <p>inscrit {{ this?.dateCreation | ageComment}}</p>
+
+                <!-- <ion-buttons item-end> -->
+                <button item-end class="createButton" outline icon-only (click)="openModal()">
+                    <img [ngStyle]="{'width': '2em'}" src="assets/imgs/option.png">
+                </button>
+                <ion-buttons class="mapButton">
+                    <button item-end ion-button clear icon-only (click)="gotoTrophy()">
+                        <ion-icon name="trophy"></ion-icon>
+                    </button>
+                    <button item-end (click)="gotoMap()" ion-button icon-start>
+                        <ion-icon ios="ios-pin" md="md-pin"></ion-icon>
+                        MAP
+                    </button>
+                </ion-buttons>
+            </ion-item>
+        </ion-card>
+
+
+        <!--_____________________________toolbar_________________ no-border-top     color="danger"       -->
+
+        <ion-grid class="test">
+            <ion-row align-items-center>
+                <ion-col col-2 col-md-3>
+                    <ion-buttons>
+                        <button ion-button block clear icon-only (click)="gotoresearch()">
+                            <ion-icon name="print"></ion-icon>
+                        </button>
+                    </ion-buttons>
+                </ion-col>
+
+                <ion-col col-8 col-md-6>
+                    <ion-segment clear [(ngModel)]="bookList">
+                        <ion-segment-button value="released">
+                            Released
+                        </ion-segment-button>
+                        <ion-segment-button value="read">
+                            Read
+                        </ion-segment-button>
+                    </ion-segment>
+                </ion-col>
+
+                <ion-col col-2 col-md-3>
+                    <ion-buttons>
+                        <button ion-button block clear icon-only (click)="scan()">
+                            <ion-icon name="qr-scanner"></ion-icon>
+                        </button>
+                    </ion-buttons>
+                </ion-col>
+
+            </ion-row>
+        </ion-grid>
+
+        <!--__________________________________fin___________________________ -->
+
+        <!--___________________________________RELEASED__________________________________________-->
+        <div [ngSwitch]="bookList">
+
+            <div *ngSwitchCase="'released'">
+
+                <!-- Book released ==> {{this.userBookReleasedDataTab?.length}} -->
+
+                <!--______________message quand 0 book released a FAIRE -->
+
+                <div *ngIf="testNb(this.userBookReleasedDataTab?.length)">
+                    message TEST comment relacher un livre bla bla bla
+                </div>
+                <!--____________________________________fin-->
+
+                <ion-row *ngIf="!testNb(this.userBookReleasedDataTab?.length)">
+
+                    <ion-card class=" bookCards " *ngFor="let book of userBookReleasedDataTab">
+                        <ion-grid>
+                            <ion-row>
+                                <ion-col col-3>
+                                    <img item-start src="{{book.bookImgUrl}}">
+                                </ion-col>
+                                <ion-col col-8>
+                                    <h2>{{ book?.title }}</h2>
+                                    <p>by {{ book?.author}}</p>
+                                    <p>in {{book?.cityReleasing}} • {{ book?.placeReleasing}} • </p>
+                                    <p>{{ book?.countryReleasing}}</p>
+                                    <span class="flag-icon" [ngStyle]="{'background-image': 'url(' +  book?.flagReleasing + ')' }"></span>
+
+                                    <p>{{ book?.dateReleasing | ageComment}}</p>
+                                    <p> {{book.like | likePipe}} • {{book.nbComments | nbCommentPipe}} • {{book.dist}} km</p>
+                                    <p>{{book.nbReaders | nbPipe}}</p>
+
+                                    <button (tap)="gotobook(book.bookId)" ion-button clear item-end>info</button>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+
+                    </ion-card>
+                </ion-row>
+
+            </div>
+            <!--___________________________________fin__________________________________________-->
+
+            <!--___________________________________READ_______________________________________________-->
+            <div *ngSwitchCase="'read'">
+                <!-- Book read ==> {{this.userBookReadDataTab?.length}} -->
+                <!-- <ion-item no-lines class="readTitle">
+              Book Read
+              <button item-end ion-button clear right-icon (click)="scan()">new
+                  <ion-icon name="qr-scanner"></ion-icon>        </button>
+            </ion-item>
+      
+          <!--_______________message quand 0 book read a FAIRE-->
+                <div *ngIf="testNb(this.userBookReadDataTab?.length)">
+                    message TEST pour read comment enristrer un livre lu bla bla bla
+                </div>
+                <!--____________________________________________fin-->
+                <ion-row *ngIf="!testNb(this.userBookReadDataTab?.length)">
+
+                    <ion-card class="bookCards" *ngFor="let book of userBookReadDataTab">
+                        <ion-grid>
+                            <ion-row>
+                                <ion-col col-3>
+                                    <img item-start src="{{book.bookImgUrl}}">
+                                </ion-col>
+                                <ion-col col-8>
+                                    <h2>{{ book?.title }}</h2>
+                                    <p>by {{ book?.author}} • </p>
+                                    <p>in {{book?.cityReading}} • {{ book?.placeReading}} • </p>
+                                    <p>{{ book?.countryReading}}</p>
+                                    <span class="flag-icon" [ngStyle]="{'background-image': 'url(' +  book?.flagReading + ')' }"></span>
+                                    <p>{{ book?.dateReading | ageComment}}</p>
+                                    <!-- <p> {{book.like | likePipe}} • {{book.nbComments | nbCommentPipe}} • {{book.dist}} km</p>
+                      <p>{{book.nbReaders | nbPipe}}</p> -->
+                                    <p>{{book.nbReaders | nbPipe}}</p>
+                                    <button (tap)="gotobook( book?.bookId )" ion-button clear item-end>info</button>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                        <ion-row>
+                            <ion-col col-4 center text-center>
+                                <button ion-button icon-left clear small>
+                                    <img [ngStyle]="{'width': '3em'}" src="assets/imgs/map.png">
+                                    <div> {{book.dist}} km</div>
+                                </button>
+                            </ion-col>
+                            <ion-col col-4>
+                                <button ion-button icon-left clear small>
+                                    <ion-icon ios="ios-chatboxes" md="md-chatboxes"></ion-icon>
+                                    <div>{{book?.nbComments | nbCommentPipe}}</div>
+                                </button>
+                            </ion-col>
+                            <ion-col col-4>
+                                <button ion-button icon-left clear small>
+                                    <ion-icon name="thumbs-up"></ion-icon>
+                                    <div>{{book?.like | likePipe}}</div>
+                                </button>
+                            </ion-col>
+
+                        </ion-row>
+                    </ion-card>
+
+                </ion-row>
+            </div>
+            <!--___________________________________fin__________________________________________-->
+
+        </div>
+    </div>
+
+</ion-content>

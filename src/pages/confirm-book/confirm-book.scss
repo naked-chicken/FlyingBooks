@@ -1,0 +1,68 @@
+page-confirm-book {
+    ion-content {
+        background-image: url('../assets/imgs/FlyingBooks.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        border-color: transparent;
+        -webkit-background-image: url('../assets/imgs/FlyingBooks.jpg');
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+    
+      }
+
+
+      ion-navbar {
+       // text-align: center;
+    
+    }
+
+    .bookCard {
+        background-color: rgba(255, 255, 255, 0.726);
+
+    }
+
+    .imga {
+        max-width: 100px;
+    }
+
+    .hello {
+        color: rgb(82, 19, 141);
+        text-shadow: 1px 2px 0 rgba(0,0,0,0.4),
+        -1px -2px 0 rgba(255,255,255,1);
+        text-align: center;
+        font-size: 2px;
+    }
+
+    .FBooks {
+        font-weight: bold; 
+        font-size: 3px;
+        text-align: center;
+    } 
+
+    .qrcode {
+        text-align: center;
+        font-size: 1px;
+    }
+
+    .value {
+        font-size: 0.5px;
+    }
+
+    .tel {
+        font-size: 0.5px;
+        text-align: center;
+    }
+
+    .text-etiq {
+        p {
+            text-align: center;
+            font-size: 1px;
+        }
+
+        
+    }
+
+   
+
+}

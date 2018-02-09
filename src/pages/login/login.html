@@ -1,0 +1,133 @@
+<!--<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Login</ion-title>
+  </ion-navbar>
+</ion-header>-->
+
+
+<ion-content padding fullscreen>
+
+  <div [ngStyle]="{'height': '50%'}"></div>
+
+  <div class="formContent">
+
+  <ion-segment clear [(ngModel)]="register">
+    <ion-segment-button value="pseudo">
+      pseudo
+    </ion-segment-button>
+    <ion-segment-button value="email">
+      email
+    </ion-segment-button>
+  </ion-segment>
+
+
+  <div [ngSwitch]="register">
+
+    <div *ngSwitchCase="'pseudo'">
+
+      <!-- -----------------------------------------------------PSEUDO--------------------------------------------------------------------------- -->
+
+      <form [formGroup]="loginFormByPseudo" (submit)="loginUserByPseudo()" novalidate>
+
+
+        <ion-col col>
+
+          <ion-list inset no-lines class="no-border">
+
+            <ion-item>
+              <ion-label floating>Pseudo</ion-label>
+              <ion-input formControlName="Pseudo" type="Pseudo" placeholder="" [class.invalid]="!loginFormByPseudo.controls.Pseudo.valid && blur"></ion-input>
+            </ion-item>
+
+            <ion-item class="error-message" *ngIf="!loginFormByPseudo.controls.Pseudo.valid && loginFormByPseudo.controls.Pseudo.dirty">
+              <p>Invalide (min: 3, max: 20)</p>
+            </ion-item>
+
+
+            <ion-item>
+              <ion-label floating>Password</ion-label>
+              <ion-input formControlName="password" type="password" placeholder="" [class.invalid]="!loginFormByPseudo.controls.password.valid && blur"></ion-input>
+            </ion-item>
+
+            <ion-item class="error-message" *ngIf="!loginFormByPseudo.controls.password.valid && loginFormByPseudo.controls.password.dirty">
+              <p>6..20 (aA_ .)accepted</p>
+            </ion-item>
+
+
+          </ion-list>
+        </ion-col>
+
+
+        <ion-col>
+          <button class="login-button" ion-button block type="submit" [disabled]="!loginFormByPseudo.valid">
+            LOGIN
+          </button>
+        </ion-col>
+
+
+
+        <div class="signin">
+          <span (click)="goToSignup()">Create Account</span>
+          <span (click)="goToResetPassword()">Forgot Password</span>
+        </div>
+
+      </form>
+
+    </div>
+
+    <!-- -----------------------------------------------------Email--------------------------------------------------------------------------- -->
+
+    <div *ngSwitchCase="'email'">
+
+      <form [formGroup]="loginForm" (submit)="loginUser()" novalidate>
+
+
+        <ion-col col>
+
+          <ion-list inset no-lines class="no-border">
+
+
+            <ion-item>
+              <!-- <ion-label floating stacked>Email</ion-label> -->
+              <ion-label stacked>Email</ion-label>
+              <ion-input formControlName="email" type="email" placeholder="" [class.invalid]="!loginForm.controls.email.valid && blur"></ion-input>
+            </ion-item>
+
+            <ion-item class="error-message" *ngIf="!loginForm.controls.email.valid && loginForm.controls.email.dirty">
+              <p>Please enter a valid email address.</p>
+            </ion-item>
+
+            <ion-item>
+              <ion-label stacked>Password</ion-label>
+              <ion-input formControlName="password" type="password" placeholder="" [class.invalid]="!loginForm.controls.password.valid && blur"></ion-input>
+            </ion-item>
+
+            <ion-item class="error-message" *ngIf="!loginForm.controls.password.valid && loginForm.controls.password.dirty">
+              <p>6..20 (aA_ .)accepted</p>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+
+
+
+        <ion-col>
+          <button class="login-button" ion-button block type="submit" [disabled]="!loginForm.valid">
+            LOGIN
+          </button>
+        </ion-col>
+
+
+        <div class="signin">
+          <span (click)="goToSignup()">Create Account</span>
+          <span (click)="goToResetPassword()">Forgot Password</span>
+        </div>
+
+      </form>
+    </div>
+
+  </div>
+
+  <!-- ----------------------------------------------------------------------- -->
+  </div>
+
+</ion-content>

@@ -1,0 +1,105 @@
+<ion-header>
+
+  <ion-navbar [ngStyle]="{'max-height' : '2.5em' }" color="primary">
+
+    <ion-item no-lines align-items-center color="primary">
+
+      <ion-icon item-start [ngStyle]="{'text-align' : 'center'}">
+        <img [ngStyle]="{'max-height' : '2em' }" src="{{this.bookImgUrl}}">
+      </ion-icon>
+
+      <ion-label text-wrap> {{this.title}}
+      </ion-label>
+
+      <button item-end ion-button clear (click)="dismiss()">
+        <ion-icon>
+          <img [ngStyle]="{'max-height': '2.5em'}" src="assets/imgs/icons-close.png">
+        </ion-icon>
+      </button>
+    </ion-item>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding [ngStyle]="{'background-color' : 'whitesmoke'}">
+
+  <ion-refresher (ionRefresh)="doRefresh($event)" (ionPull)="doPulling($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list>
+
+  <ion-item-group *ngFor="let comment of bookCommentsDataTab; let i = index">
+
+    <ion-card text-wrap [ngStyle]="{'border-radius' : '25px'}">
+
+      <ion-item no-lines [ngStyle]="{'align-items' : 'flex-center ', 'background-color' : 'whitesmoke'}">
+
+        <ion-avatar item-start *ngIf='comment.imgUrl'>
+          <img src="{{comment.imgUrl}}">
+        </ion-avatar>
+
+        <ion-label>
+          <div [ngStyle]="{'display' : 'flex', 'justify-content' : 'space-between'}">
+            <h2>{{comment.pseudo}}</h2>
+            <ion-note>{{comment.date | ageComment}}</ion-note>
+          </div>
+        </ion-label>>
+
+
+        <button item-end ion-button icon-only clear *ngIf="comment.commenterId !== this.userId" (click)="reportUser(comment.commenterId)">
+          <img [ngStyle]="{'width': '1.5em'}" src="assets/imgs/attention.png">
+        </button>
+
+        <button item-end ion-button icon-only clear *ngIf="comment.commenterId == this.userId" (click)="removeComment(comment.commentId, i)">
+          <img [ngStyle]="{'width': '2em'}" src="assets/imgs/trash.png">
+        </button>
+
+      </ion-item>
+
+      <ion-card-content>
+        <p>{{comment.comment}}</p>
+      </ion-card-content>
+
+    </ion-card>
+
+  </ion-item-group>
+
+  </ion-list>
+
+   
+
+</ion-content>
+
+<!-- ---------------------------------------add comment------------------------------------------ -->
+<ion-footer >
+  <form [formGroup]="CommentForm" (submit)="addComment()" novalidate>
+    <div [ngStyle]="{'display' : 'flex'}">
+        <button clear ion-button icon-only (click)="addRemInputComment()">
+            <img [ngStyle]="{'width': '3em'}"  [src]="inputShow ? 'assets/imgs/arrow-down.png' : 'assets/imgs/add-comment.png'"> 
+        </button>
+
+      <ion-item *ngIf="inputShow">
+        <ion-input [(ngModel)]="placeHolder" formControlName="Comment" type="Comment" placeholder="add a new comment" [class.invalid]="!CommentForm.controls.Comment.valid && blur"></ion-input>
+      </ion-item>
+
+      <button *ngIf="inputShow" class="confirm-button" ion-button type="submit" [disabled]="!CommentForm.valid">
+        OK
+      </button>
+
+      <button class= "refresher" *ngIf="!inputShow" end clear ion-button icon-only (click)="getComments()">
+          <img [ngStyle]="{'width': '2em'}"  src="assets/imgs/refresh.png"> 
+      </button>
+
+    </div>
+    <ion-item *ngIf="!CommentForm.controls.Comment.valid && CommentForm.controls.Comment.dirty && inputShow">
+      <p>not a valid comment (2 - 50)</p>
+    </ion-item>
+  </form>
+
+
+
+
+</ion-footer>

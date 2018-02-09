@@ -1,0 +1,156 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>BOOK info</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="gotoprofile()">
+        <ion-icon name="person"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+
+  <div class="abs">
+    <!--____________________________ card presentation + bouton like et du modal de chat__________________-->
+    <ion-card class="presentationCard">
+
+      <ion-grid>
+        <ion-row>
+          <ion-col col-3>
+            <img item-start src="{{this.bookImgUrl}}">
+          </ion-col>
+          <ion-col col-8>
+            <h1>{{this.title}}</h1>
+            <p>{{this.author}}</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+
+
+      <ion-row class="iconRow">
+        <ion-col col-3>
+          <button ion-button icon-left clear small>
+            <img [ngStyle]="{'width': '1.8em'}" src="assets/imgs/eye-blue.png">
+            <p>{{this.bookReadersDataTab?.length | nbPipe}}</p>
+          </button>
+        </ion-col>
+        <ion-col col-3 center text-center>
+          <button ion-button icon-left clear small (click)="gotoMap()">
+            <img [ngStyle]="{'width': '2.3em'}" src="assets/imgs/map.png">
+            <p> {{this.dist | km}} km</p>
+          </button>
+        </ion-col>
+        <ion-col col-3>
+          <button ion-button icon-left clear small (click)="openModal()">
+            <ion-icon ios="ios-chatboxes" md="md-chatboxes"></ion-icon>
+            <p>{{this?.nbComments | nbCommentPipe}}</p>
+          </button>
+        </ion-col>
+        <ion-col col-3>
+          <button ion-button icon-left clear small (click)="like()">
+            <ion-icon name="thumbs-up"></ion-icon>
+            <p>{{this?.nbLike | likePipe}}</p>
+          </button>
+        </ion-col>
+
+      </ion-row>
+
+
+      <ion-buttons *ngIf="fromScan" class="optionbutton">
+        <button ion-button icon-left clear (click)="confirmReadBook()">
+          <img [ngStyle]="{'width': '2em'}" src="assets/imgs/ok-icon.png">
+          <p>I read it.</p>
+        </button>
+      </ion-buttons>
+
+    </ion-card>
+
+    <!--____________________________ fin_____________________________________________-->
+
+    <!--____________________________  presentation du releaser______________________________-->
+
+    <ion-item no-lines [ngStyle]="{'color': 'white'}" class="releasedTitle">
+      Book releaser
+    </ion-item>
+
+    <ion-item class="releaserItem">
+
+      <ion-avatar item-start>
+        <img src="{{this.imgUrl}}">
+      </ion-avatar>
+
+      <h1>{{ this?.releaserPseudo }}</h1>
+
+      <ion-row class="cityflag">
+        <ion-col col-3>
+          <span class="flag-icon-small" [ngStyle]="{'background-image': 'url(' +  this?.flagReleasing + ')'}"></span>
+        </ion-col>
+        <ion-col col-9>
+          <h4 [ngStyle]="{'text-decoration': 'underline' }">{{this?.cityReleasing}} </h4>
+          <h4> {{ this?.placeReleasing}} </h4>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="agelink">
+        <ion-col col-9>
+          <p> the {{ this?.dateReleasing | date }}</p>
+        </ion-col>
+        <ion-col col-3>
+          <button *ngIf='this?.releaserPseudo !== delete && !fromScan' (tap)="goToDudeProfil(this.releaserId)" ion-button clear>
+            <img class="linkB" src="assets/imgs/link.png">
+          </button>
+        </ion-col>
+      </ion-row>
+
+
+    </ion-item>
+
+    <!--____________________________ fin_____________________________________________-->
+
+    <!--____________________________  presentation des reader______________________________-->
+    <ion-item no-lines [ngStyle]="{'color': 'white'}" class="readTitle">
+      Book readers: {{this.bookReadersDataTab?.length}}     
+    </ion-item>
+
+    <ion-list>
+      <ion-item class="releaserItem" *ngFor="let reader of bookReadersDataTab">
+
+        <!-- <ion-avatar item-start *ngIf='!reader.imgUrl'>
+        <img src="assets/imgs/avatar.png">
+      </ion-avatar> -->
+        <ion-avatar item-start>
+          <img *ngIf='reader?.imgUrl !== ""' src="{{reader.imgUrl}}">
+          <img *ngIf='reader?.imgUrl === ""' src="assets/imgs/deleted.png">
+        </ion-avatar>
+
+        <h2 *ngIf='reader?.readerPseudo !== ""'>{{ reader?.readerPseudo }}</h2>
+        <h2 *ngIf='reader?.readerPseudo === ""'>deleted</h2>
+
+        <ion-row class="cityflag">
+          <ion-col col-3>
+            <span class="flag-icon-small" [ngStyle]="{'background-image': 'url(' +  reader?.flag + ')'}"></span>
+          </ion-col>
+          <ion-col col-9>
+            <h4 [ngStyle]="{'text-decoration': 'underline' }">{{reader?.cityReading }} </h4>
+            <h4> {{ reader?.placeReading}} </h4>
+          </ion-col>
+        </ion-row>
+
+        <ion-row class="agelink">
+          <ion-col col-9>
+            <p>{{ reader?.dateReading | ageComment}}</p>
+          </ion-col>
+          <ion-col col-3>
+            <img *ngIf='reader?.readerPseudo !== "" && !fromScan' (click)="goToDudeProfil(reader.readerId)" class="linkB" src="assets/imgs/link.png">
+          </ion-col>
+        </ion-row>
+
+        <!-- <button *ngIf='reader?.readerPseudo !== "" && !fromScan' (tap)="goToDudeProfil(reader.readerId)" ion-button clear>info</button> -->
+      </ion-item>
+    </ion-list>
+
+  </div>
+</ion-content>

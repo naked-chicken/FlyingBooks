@@ -1,0 +1,211 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Classement</ion-title>
+
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+
+  <ion-segment clear [(ngModel)]="type">
+    <ion-segment-button value="books">
+      Books
+    </ion-segment-button>
+    <ion-segment-button value="users">
+      Users
+    </ion-segment-button>
+
+  </ion-segment>
+
+
+  <div [ngSwitch]="type">
+
+    <div *ngSwitchCase="'books'">
+
+      <ion-segment [ngStyle]="{'width': '60%', 'left' : '20%', 'position': 'relative'}" clear [(ngModel)]="style">
+        <ion-segment-button value="distance">
+          distance
+        </ion-segment-button>
+        <ion-segment-button value="readers">
+          readers
+        </ion-segment-button>
+      </ion-segment>
+
+
+      <div [ngSwitch]="style">
+
+        <div *ngSwitchCase="'distance'">
+
+          <p>
+            classement des book par distance:
+          </p>
+          <ion-list>
+            <ion-item *ngFor="let book of tabBookDist; let i = index">
+
+              <ion-grid>
+                <ion-row [ngStyle]="{'justify-content': 'center',  'height': '100%', 'display': 'flex'}">
+                  <ion-col col-3>
+                    <img item-start src="{{book.bookImgUrl}}">
+                  </ion-col>
+                  <ion-col text-wrap col-5>
+                    <h5>{{book?.title}} </h5>
+                    <p>{{book?.author}} </p>
+                    <p> {{book?.dist}} km</p>
+
+                  </ion-col>
+                  <ion-col col-3>
+                    <br>
+                    <img *ngIf="i == 0" [ngStyle]="{'width': '4em'}" src="assets/imgs/medal-1.png">
+                    <img *ngIf="i == 1" [ngStyle]="{'width': '4em'}" src="assets/imgs/medal-2.png">
+                    <img *ngIf="i == 2" [ngStyle]="{'width': '4em'}" src="assets/imgs/medal-3.png">
+                    <img (click)="gotobook(book.bookId)" class="linkB" src="assets/imgs/link.png">
+
+
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-item>
+
+          </ion-list>
+
+        </div>
+
+        <div *ngSwitchCase="'readers'">
+
+          <p>
+            classement des book par nb de readers:
+          </p>
+          <ion-list>
+            <ion-item *ngFor="let book of tabBookNbReaders; let i = index">
+
+              <ion-grid>
+                <ion-row [ngStyle]="{'justify-content': 'center',  'height': '100%', 'display': 'flex'}">
+                  <ion-col col-3>
+                    <img item-start src="{{book.bookImgUrl}}">
+                  </ion-col>
+                  <ion-col text-wrap col-5>
+                    <h5>{{book?.title}} </h5>
+                    <p>{{book?.author}} </p>
+                    <p> {{book?.NbReaders}} readers</p>
+
+                  </ion-col>
+                  <ion-col col-3>
+                    <br>
+                    <img *ngIf="i == 0" [ngStyle]="{'width': '4em'}" src="assets/imgs/medal-1.png">
+                    <img *ngIf="i == 1" [ngStyle]="{'width': '4em'}" src="assets/imgs/medal-2.png">
+                    <img *ngIf="i == 2" [ngStyle]="{'width': '4em'}" src="assets/imgs/medal-3.png">
+                    <img (click)="gotobook(book.bookId)" class="linkB" src="assets/imgs/link.png">
+
+
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-item>
+
+          </ion-list>
+
+        </div>
+      </div>
+    </div>
+
+
+    <div *ngSwitchCase="'users'">
+
+      <ion-segment [ngStyle]="{'width': '60%', 'left' : '20%', 'position': 'relative'}" clear [(ngModel)]="style">
+        <ion-segment-button value="distance">
+          distance
+        </ion-segment-button>
+        <ion-segment-button value="readers">
+          readers
+        </ion-segment-button>
+      </ion-segment>
+
+
+      <div [ngSwitch]="style">
+
+        <div *ngSwitchCase="'distance'">
+
+          <p>
+            liste des users rangée par la dist totale des livres relachés: </p>
+          <ion-list>
+            <ion-item *ngFor="let user of tabUserReleasedDist; let i = index">
+
+              <ion-grid>
+                <ion-row [ngStyle]="{'justify-content': 'center',  'height': '100%', 'display': 'flex'}">
+                  <ion-col col-8>
+
+                    <ion-item no-lines>
+                      <ion-avatar item-start>
+                        <img item-start src="{{user.imgUrl}}">
+                      </ion-avatar>
+
+                      <h5>{{user?.pseudo}} </h5>
+                      <p> {{user?.dist}} km</p>
+
+                    </ion-item>
+                  </ion-col>
+                  <ion-col col-3>
+
+                    <img *ngIf="i == 0" [ngStyle]="{'width': '5em'}" src="assets/imgs/medal-1.png">
+                    <img *ngIf="i == 1" [ngStyle]="{'width': '5em'}" src="assets/imgs/medal-2.png">
+                    <img *ngIf="i == 2" [ngStyle]="{'width': '5em'}" src="assets/imgs/medal-3.png">
+                    <img (click)="goToDudeProfil(user.userId)" class="linkB" src="assets/imgs/link.png">
+
+
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-item>
+
+          </ion-list>
+          your classement: {{this.class1}}
+
+        </div>
+
+        <div [ngSwitch]="style">
+
+          <div *ngSwitchCase="'readers'">
+
+
+            <p>
+              liste des users rangée par le nombre de readers totals des livres relachés: </p>
+            <ion-list>
+              <ion-item *ngFor="let user of tabUserReleasedNbReaders; let i = index">
+                <ion-grid>
+                  <ion-row [ngStyle]="{'justify-content': 'center',  'height': '100%', 'display': 'flex'}">
+                    <ion-col col-8>
+                      <ion-item no-lines>
+
+                        <ion-avatar item-start>
+                          <img item-start src="{{user.imgUrl}}">
+                        </ion-avatar>
+
+                        <h5>{{user?.pseudo}} </h5>
+                        <p> {{user?.nbReaders}} readers</p>
+                      </ion-item>
+                    </ion-col>
+                    <ion-col col-3>
+
+                      <img *ngIf="i == 0" [ngStyle]="{'width': '5em'}" src="assets/imgs/medal-1.png">
+                      <img *ngIf="i == 1" [ngStyle]="{'width': '5em'}" src="assets/imgs/medal-2.png">
+                      <img *ngIf="i == 2" [ngStyle]="{'width': '5em'}" src="assets/imgs/medal-3.png">
+                      <img (click)="goToDudeProfil(user.userId)" class="linkB" src="assets/imgs/link.png">
+
+
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </ion-item>
+
+            </ion-list>
+            your classement: {{this.class2}}
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</ion-content>

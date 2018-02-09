@@ -1,0 +1,36 @@
+page-research-book {
+
+    ion-content {
+        background-image: url('../assets/imgs/FlyingBooks.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        border-color: transparent;
+        -webkit-background-image: url('../assets/imgs/FlyingBooks.jpg');
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+    
+      }
+
+      .bookItem {
+        background-color: rgba(255, 255, 255, 0.726);
+
+      }
+
+    .imgaff {
+        object-fit: contain;
+        max-height: 100%;
+        max-width: 100%;
+    }
+
+    ion-navbar {
+       // text-align: center;
+        // align-content: center;
+        // display: flex;
+        // text-align: center;
+        // justify-content: center
+
+
+    
+    }
+}

@@ -1,0 +1,317 @@
+page-public-profile {
+    .removeBut {
+        position: fixed;
+        top: 3%;
+        right: 2%;
+    }
+
+
+        .flag-icon-small {
+          //  background-size: contain;
+            /* background-position: 50%; */
+            background-repeat: no-repeat;
+           // position: relative;
+           // display: inline-block;
+            width: 3em;
+            line-height: 1.2em;
+            
+          }
+          .flag-icon-small:before {
+            content: "\00a0";
+          }
+    
+        ion-header {
+             text-align: center;
+             justify-content: center;
+            align-content: center;
+            background-image: url('../assets/imgs/FD_Label.jpg');
+    
+            .headItem{
+                //background-image: url('../assets/imgs/FD_Label.jpg');
+                width: 80%;
+                left: 10%;
+                background-color: transparent;
+    
+                display: flex;
+                align-items: center;
+               // justify-content: center;
+    
+            }
+    
+           ion-title {
+           // font-size: 40px;
+               text-align: center;
+               //display: flex;
+            //    p {
+            //        //background-color: black;
+            //        font-size: 20px;
+            //       display: inline-block;
+    
+            // }
+               img {
+                   width: 40px;
+               }
+           }
+    
+        }
+    
+    
+    
+    
+    
+        ion-content {
+            background-image: url('../assets/imgs/FlyingBooks.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-color: transparent;
+            -webkit-background-image: url('../assets/imgs/FlyingBooks.jpg');
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+        
+          }
+    
+          .col{
+              padding: -5px;
+          }
+    
+        //.scroll-content {}
+           // align-content: center;
+           // display: flex;
+           //background-color: rgb(222, 228, 222);
+    
+        //    flex-direction: column;
+        //     justify-content: center;
+        //     text-align: center;
+    
+        .books {
+            //padding-top: -10px;
+            margin-top: -10px;
+        }
+          
+    
+        .vide{
+            height: 11em;
+    
+        }
+       
+          @media only screen and (min-width: 600px) {   //baisser la width
+                
+            .abs {
+                position: relative;
+                width: 70%;
+                left: 15%;
+                top: 15%;
+            }
+    
+          }
+    
+        .presentationCard{
+            position: relative;
+            //margin-top: -5px;
+            border-radius: 10px;
+            height: 11em;
+            background-color: transparent;
+            
+    
+            .presentation {
+                margin-top: -20px;
+                background-color: transparent;
+                
+    
+                .imgProfile{
+                    border-radius: 10px;
+                    height: 8em; width: 8em;
+                }
+    
+                ion-col{
+                    left:7px;
+                }
+                
+            
+            }
+    
+           
+        }
+    
+        .statIcon {
+            width : 1em;
+        height: 1em
+        }
+    
+      
+    
+        ion-thumbnail{
+            img{
+            border-radius: 10px;
+        }}
+    
+    
+        
+    
+        // .createButton { 
+        //     background-color: transparent;
+        //    position: fixed;
+        //    top: 0.2em;
+        //    right: 0.1em;
+        // };
+    
+        .optionbutton{
+            position: fixed;
+           top: 0.8em;
+           right: 0.1em;
+        }
+    
+            
+    
+        ion-scroll[scrollX] {
+            white-space: nowrap;
+            height: 9em;
+            overflow: hidden;
+            background-color: transparent;
+            margin-left: -30px;
+            padding-top: 0px;
+            //padding: -10px;
+        
+            .scroll-item {
+              display: inline-block;
+            }
+    
+            .bookCards{
+                margin-top: -20px;
+                margin-bottom: -20px;
+                width: 18em;
+                height: 15em;
+                background-color: rgba(255, 255, 255, 0.795);
+            }
+    
+            .iconRow {
+                ion-col {
+                       
+           // justify-content: center;
+           // text-align: center;
+                  // align-content: center;
+    
+                flex-direction: column;    //  good pou aligner x ou y
+                display: flex;
+                align-items: center;
+               }
+                p{
+                    font-size: 0.7em;
+                }
+            }
+    
+            .bookCover {
+               margin-top: 0px;
+              max-height: 13em;
+               // width: 10em;
+            }
+            .cityflag{
+                //background-color: yellow;
+              //  flex-direction: column ;    //  good pou aligner x ou y
+               // display: flex;
+               align-items: center;
+               height: 10%;
+                
+                justify-content: center;
+                //text-align: center;
+                //align-content: center;
+                
+               
+            }
+    
+            .agelink {
+                //background-color: blue;
+             //   flex-direction: row ;    //  good pour aligner x ou y
+               // display: flex;
+               // align-items: center;
+              //  position: absolute;
+              //  bottom: 10px;
+    
+            }
+             .linkB{
+            //  position: absolute;
+            //      bottom: 2px;
+               //   left: 3.2em;
+               width: 1.3em;
+            }
+    
+            h5{
+                font-family: Impact;
+                font-weight: 600;
+                //font-weight: bold;
+            }
+    
+            h4{
+                font-weight: 500;
+                font-size: 0.9em;
+            }
+    
+            
+    
+            .author{
+                font-size: 0.7em;
+            }
+        
+        }
+    
+         /* Hide ion-content scrollbar */
+      ::-webkit-scrollbar{
+        display:none;
+      }
+    
+      .releasedBorder{
+        border: 5px outset rgba(6, 167, 6, 0.603);
+      }
+    
+      .releasedTitle{
+          border-top-left-radius: 10px;
+          border-top-right-radius: 10px;
+        //   min-height: none !important;
+        //   height: 2px !important;
+          margin-bottom: 0px;
+          background-color: rgba(6, 167, 6, 0.603);
+        
+      }
+    
+      .releasedItem{
+        background-color: transparent;
+        //height: 100%;
+        width: 110%;
+        margin: -8px -8px;
+    }
+    
+    .readBorder{
+        border: 5px outset rgba(250, 35, 35, 0.726);
+    }
+       .readTitle{
+        margin-top: 5px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        margin-bottom: 0px;
+        background-color: rgba(250, 35, 35, 0.726);
+       }
+       
+       .readItem{
+        background-color: transparent;
+        margin: -8px -8px;
+        width: 110%;
+    
+    
+       }
+    
+    
+       .footer{
+           font-size: 1.7em;
+           font-weight: 900;
+           font-family: Courier New;
+           background-color: rgba(0, 0, 255, 0.747);
+           color: rgb(255, 255, 255);
+           text-align: center;
+       }
+    
+    
+    
+    
+    
+}

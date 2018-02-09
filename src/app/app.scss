@@ -14,3 +14,137 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+
+//test  !!!!!!!!!!!!!!
+.LoginPage2 {
+    background-image: url('../assets/imgs/login.jpg');
+    -webkit-background-image: url('../assets/imgs/login.jpg');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    margin: auto;
+
+  }
+
+  // .etiquette {
+  //   background-image: url('../assets/imgs/FD_Label.jpg');
+  //   -webkit-background-image: url('../assets/imgs/FD_Label.jpg');
+  //   -webkit-background-size: cover;
+  //   -moz-background-size: cover;
+  //   background-size: cover;
+  //   background-position: center;
+  //   background-repeat: no-repeat;
+
+  //   margin: auto;
+ // }
+
+//---------------------------------------alert--------------------------------
+//  .buttoncss {
+//   color: red;
+//   background-color: yellow
+// }
+
+.alertcss{
+  .alert-wrapper {
+    background: grey;
+    //box-shadow: none;
+  }
+  //background-image: filter(url('assets/imgs/FD_Label.jpg'), blur(20px));
+
+
+  background: fade-out($color: grey, $amount: 0.7);
+ // filter: grayscale(1);
+ // color: black;
+  //background-color: pink;
+ // opacity: 1;
+  //z-index: 2000;
+  //filter: blur(5px);
+  
+  // :before {
+  //   filter: blur(10px);
+  // }
+
+  // .buttoncss {
+  //   color: rgb(133, 122, 134);
+  //   background-color: yellow
+  // }
+
+  // .title {
+  //   color: yellow;
+  //   background-color: yellow;
+  // }
+
+
+  
+}
+//--------------------------------Loading----------------------------------
+.loadingOpen{
+  .loading-wrapper {
+    background: transparent;
+    box-shadow: none;
+  }
+  background: fade-out($color: rgb(215, 228, 240), $amount: 0.01);
+
+}
+
+.my-loading-book-class {
+  .loading-wrapper {
+    background: transparent;
+    box-shadow: none;
+  }
+  background: fade-out($color: rgb(236, 54, 54), $amount: 0.01);
+
+}
+
+.my-loadingWriting-class {
+  .loading-wrapper {
+    background: transparent;
+    box-shadow: none;
+  }
+  background: fade-out($color: white, $amount: 0.01);
+}
+
+
+.my-loading-class{
+  .loading-wrapper {
+    background: transparent;
+    box-shadow: none;
+  }
+  //background: transparent;
+  //opacity: 1;
+  //width: 800px;
+  //size: screen;
+  //filter: drop-shadow(10px)
+ //background: fade-in($color: white, $amount: 0.9);
+ //background: fade-out($color: white, $amount: 0.1);
+  //filter: blur(10px);
+
+ // background-color: white;
+ // filter: opacity(0.09);
+ background: fade-out($color: grey, $amount: 0.3);
+
+}
+
+.loading-custom-spinner-container{
+  //size: screen;
+  //width: 8000px;
+//box-shadow: 0px;
+//filter: opacity(0.1);
+//box-shadow: none;
+
+}
+
+.loading-custom-spinner-box{
+ // box-shadow: 0px;
+ // width: 8000px;
+
+  //size: screen;
+  //filter: opacity(0.1);
+  //box-shadow: none;
+
+}
+

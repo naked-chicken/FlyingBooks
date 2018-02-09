@@ -1,0 +1,27 @@
+page-scan {
+
+   
+        .overflow-x-visible{ overflow-x : visible; margin-bottom:70px!important }
+    .overflow-x-hidden{ overflow-x : hidden }
+    .overflow-x-scroll{ overflow-x : scroll }
+    .overflow-x-auto{ overflow-x : auto }
+    
+    .defaut{ 
+        min-width: 100%;
+     height : 100px; 
+     margin-bottom : 20px; 
+     border : 1px solid #666; 
+    }
+
+    ion-content {
+        background-image: url('../assets/imgs/FlyingBooks.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        border-color: transparent;
+        -webkit-background-image: url('../assets/imgs/FlyingBooks.jpg');
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+    
+      }
+}

@@ -1,0 +1,59 @@
+<ion-content padding>
+
+  <div class="logoSignin">
+    <img src="assets/imgs/profile.png" class="imgSignin">
+  </div>
+
+  <!-- <imgsrc="assets/img/banner.jpg"/>-->
+  <form [formGroup]="signupForm" (submit)="signupUser()" novalidate>
+
+    <ion-col col>
+
+      <ion-list inset no-lines class="no-border">
+
+        <!--pseudo-->
+        <ion-item>
+          <ion-label stacked>Pseudo</ion-label>
+          <ion-input formControlName="pseudo" type="pseudo" placeholder="(3..20)" [class.invalid]="!signupForm.controls.pseudo.valid && blur">
+          </ion-input>
+        </ion-item>
+
+        <ion-item class="error-message" *ngIf="signupForm.controls.pseudo.pending">
+          <p>Checking pseudo...</p>
+        </ion-item>
+
+        <ion-item class="error-message" *ngIf="!signupForm.controls.pseudo.valid && signupForm.controls.pseudo.dirty && !signupForm.controls.pseudo.pending">
+          <p>Invalide (min: 3, max: 20) or already used.</p>
+        </ion-item>
+
+        <!--email-->
+        <ion-item>
+          <ion-label stacked>Email</ion-label>
+          <ion-input formControlName="email" type="email" placeholder="a@a.aa" [class.invalid]="!signupForm.controls.email.valid && blur">
+          </ion-input>
+        </ion-item>
+
+        <ion-item class="error-message " *ngIf="!signupForm.controls.email.valid && signupForm.controls.email.dirty">
+          <p>Please enter a valide mail.</p>
+        </ion-item>
+
+        <!--password-->
+        <ion-item>
+          <ion-label stacked>Password</ion-label>
+          <ion-input formControlName="password" type="password" placeholder="(6..20) (aA_ .)" [class.invalid]="!signupForm.controls.password.valid && blur">
+          </ion-input>
+        </ion-item>
+
+        <ion-item class="error-message" *ngIf="!signupForm.controls.password.valid && signupForm.controls.password.dirty">
+          <p> 6..20 (aA_ .)accepted</p>
+        </ion-item>
+
+        <!--submit-->
+        <button class="createB" ion-button block type="submit" [disabled]="!signupForm.valid">
+          Create an Account
+        </button>
+
+      </ion-list>
+    </ion-col>
+  </form>
+</ion-content>

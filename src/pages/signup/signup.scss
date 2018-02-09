@@ -1,0 +1,143 @@
+page-signup {
+    ion-content {
+        background-image: url('../assets/imgs/FlyingBooks.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        border-color: transparent;
+        -webkit-background-image: url('../assets/imgs/FlyingBooks.jpg');
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+    }
+    .scroll-content {
+        align-content: center;
+        display: flex;
+        flex-direction: column;
+        //justify-content: center;
+        text-align: center;
+      }
+
+    .logoSignin{
+        top: 10%;
+        height: 30%;
+        position: relative;
+          }
+
+    .imgSignin{
+        height: 100%;
+        opacity: 0.8;
+    }
+
+    
+
+    form {
+        height:40%;
+        top: 20%;
+   //padding-bottom: 0%;
+ // height: 49%;
+      width: 80%;
+     // margin-bottom: -10px;
+      position: relative;
+      left: 10%;
+    //   background-color: rgba(255, 255, 255, 0.808);
+    background-color: transparent;
+      z-index: 998;
+     // opacity: 0.8;
+         
+  }
+
+  .no-border {
+    border-bottom: 0 !important;
+    box-shadow: none !important;
+}
+
+
+.list {
+    margin: 0;
+    background-color: transparent;
+    opacity: 1;
+}
+
+.item {
+         //border-radius: 60px !important;     // rectangle arrondi
+         //padding-left: 10px !important;
+         margin-bottom: 0.2em;
+         opacity: 1;
+         font-size: 1em;
+         background-color: transparent;
+         padding-right: -8px;
+            
+}
+          
+
+ion-label{
+            margin-left: 5px;
+            background-color: transparent;
+}
+
+ion-input{
+    color: black;;
+    background-color: rgba(245, 245, 245, 0.76);
+    //padding-bottom: 0.5em;
+    opacity: 1;
+       
+ }
+
+.invalid{
+    // border-bottom: 1px solid #ff6153;             // ????
+    border-bottom: 1px solid #f0e7e7;             // ????
+
+}
+.error-message{
+    margin-bottom: -1em;
+    margin-top: -1em;
+    margin-left: -1em;
+    margin-right: -1em;
+            min-height: 2.2rem;
+            p {
+                font-size: 70%;
+            }
+            ion-label{
+                margin: 2px0;            // ??
+            }
+            .item-inner{
+                border-bottom: 0 !important;
+            }
+}
+
+.createB {
+        color: black !important
+}
+    
+
+//background image ...  index !!
+//background size
+
+@media only screen and (min-width: 600px) {   //baisser la width
+    form {
+      top: 10%;
+
+        // height: 49%;
+      width: 70%;
+      position: relative;
+      left: 15%;
+      background-color: rgba(255, 255, 255, 0.719);
+      z-index: 998;
+      opacity: 0.8;
+      margin-bottom: 0%;
+    }
+    
+    ion-segment {
+        width: 40%;
+        position: fixed;
+        bottom: 45%;
+        left: 30%;
+        z-index: 999;
+
+        background-color: transparent;
+      }
+      //   augmenter les size !!!
+            
+}
+
+}

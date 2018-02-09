@@ -1,0 +1,39 @@
+<ion-header color="primary">
+  <ion-navbar color="primary">
+
+
+    <img  [ngStyle]="{'max-height': '1.5em'}" src="assets/imgs/search.png">
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+    <ion-item class="bookItem" *ngFor="let book of books.items.reverse()">
+      <ion-thumbnail item-start>
+        <img class="imgaff" *ngIf="book.volumeInfo.imageLinks === undefined" src="assets/imgs/no_image_found.jpg">
+        <img class="imgaff" *ngIf="book.volumeInfo.imageLinks !== undefined" src={{book.volumeInfo.imageLinks.smallThumbnail}}>
+
+      </ion-thumbnail>
+      <h2 text-wrap>{{ book.volumeInfo.title }}</h2>
+      <p>{{ book.volumeInfo.authors }}</p>
+      <button (tap)="confirm(book)" ion-button clear item-end>
+        <ion-icon>
+            <img item-start [ngStyle]="{'max-height': '2em'}" src="assets/imgs/open-book-top-view.png">
+
+        </ion-icon>
+      </button>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
+
+<ion-footer>
+
+
+  <ion-searchbar (ionInput)="getBooks($event.target.value)"></ion-searchbar>
+
+  <!-- text comment relacher le livre -->
+
+</ion-footer>
